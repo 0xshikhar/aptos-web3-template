@@ -7,7 +7,7 @@ import { AiOutlineSearch, AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import { CgProfile } from "react-icons/cg";
 import { MdOutlineAccountBalanceWallet } from "react-icons/md";
 import { cn } from "@/lib/utils";
-import PetraWallet from "./petraWallet";
+import PetraWallet from "@/components/Wallet/petraWallet";
 
 const Navbar = () => {
 	const router = useRouter();
