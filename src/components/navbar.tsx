@@ -7,7 +7,7 @@ import { AiOutlineSearch, AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import { CgProfile } from "react-icons/cg";
 import { MdOutlineAccountBalanceWallet } from "react-icons/md";
 import { cn } from "@/lib/utils";
-import PetraWallet from "@/components/Wallet/petraWallet";
+import { WalletSelector } from "@/components/Wallet/WalletSelector";
 
 const Navbar = () => {
 	const router = useRouter();
@@ -72,7 +72,7 @@ const Navbar = () => {
 						<MdOutlineAccountBalanceWallet className="mr-2" />
 					</div>
 					<div className="px-4">
-						<PetraWallet />
+						<WalletSelector />
 					</div>
 				</div>
 
@@ -143,7 +143,7 @@ const Navbar = () => {
 						<MdOutlineAccountBalanceWallet className="mr-2" />
 					</div>
 					<div className="py-2">
-						<PetraWallet />
+						<WalletSelector />
 					</div>
 				</div>
 			</div>

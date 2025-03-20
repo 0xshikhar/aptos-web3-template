@@ -5,7 +5,10 @@ import { Inter } from "next/font/google"
 import { siteConfig } from "@/config/site"
 import { cn } from "@/lib/utils"
 import { ThemeProvider } from "@/components/theme-provider"
-import Navbar from "@/components/navigation/navbar"
+import Navbar from "@/components/navbar"
+import { WalletProvider } from "@/components/Wallet/WalletProvider"
+import { TooltipProvider } from "@/components/ui/tooltip";
+import { WrongNetworkAlert } from "@/components/Wallet/WrongNetworkAlert";
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -63,6 +66,9 @@ export const viewport: Viewport = {
   ],
 }
 
+// Move the QueryClient creation to a client component
+import { ClientQueryProvider } from "@/components/ClientQueryProvider";
+
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en" suppressHydrationWarning>
@@ -79,10 +85,15 @@ export default function RootLayout({ children }: RootLayoutProps) {
           enableSystem
           disableTransitionOnChange
         >
-          <Navbar />
-          <main className="flex-1">
-            {children}
-          </main>
+          <WalletProvider>
+            <ClientQueryProvider>
+              <TooltipProvider delayDuration={100}>
+                <WrongNetworkAlert />
+                <Navbar />
+                <main className="flex-1">{children}</main>
+              </TooltipProvider>
+            </ClientQueryProvider>
+          </WalletProvider>
         </ThemeProvider>
       </body>
     </html>
